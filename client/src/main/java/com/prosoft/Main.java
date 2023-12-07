@@ -1,7 +1,7 @@
-package org.example;
+package com.prosoft;
 
 /**
- * Server
+ * Client
  *
  */
 public class Main {
