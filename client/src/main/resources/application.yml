@@ -1,0 +1,11 @@
+geoeditor:
+  well-service:
+    name: server
+    host: localhost:8081
+spring:
+  main:
+    web-application-type: none
+
+use:
+  feign:
+    client: true
