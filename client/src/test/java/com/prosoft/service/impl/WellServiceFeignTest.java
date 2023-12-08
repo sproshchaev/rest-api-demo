@@ -18,7 +18,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @DisplayName("WellServiceFeign test:")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class WellServiceFeignTest {
-
     private final static String PROJECT_EXISTS = "test_project";
     private final static long UWI_PERMIT = 101L;
     private final static long UWI_DENY = 100L;
@@ -42,5 +41,9 @@ class WellServiceFeignTest {
         });
     }
 
-
+    @Test
+    @DisplayName("getWells() success")
+    void getWells_Success() {
+        assertNotNull(wellService.getWells(PROJECT_EXISTS));
+    }
 }
