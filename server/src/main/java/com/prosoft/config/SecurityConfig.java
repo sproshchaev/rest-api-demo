@@ -14,6 +14,8 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 
+import static org.springframework.security.config.Customizer.withDefaults;
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
@@ -31,6 +33,16 @@ public class SecurityConfig {
                         .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
                 .build();
     }
+        /*
+        http
+                .authorizeHttpRequests(authorize -> authorize
+                        .antMatchers("/wells/{project}/100").denyAll()
+                        .antMatchers("/wells/{project}/101").authenticated()
+                )
+                .formLogin();
+        return http.build();
+    }
+*/
 
 /*
     @Bean
@@ -68,6 +80,9 @@ public class SecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
+        var encoder = new BCryptPasswordEncoder();
+        var password = encoder.encode("remote");
+        System.out.println(password);
         return new BCryptPasswordEncoder();
     }
 
