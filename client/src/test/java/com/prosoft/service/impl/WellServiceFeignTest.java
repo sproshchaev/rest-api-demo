@@ -19,8 +19,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class WellServiceFeignTest {
     private final static String PROJECT_EXISTS = "test_project";
-    private final static long UWI_PERMIT = 101L;
     private final static long UWI_DENY = 100L;
+    private final static long UWI_PERMIT = 101L;
+    private final static long UWI_AUTH = 102L;
 
     @Autowired
     private WellService wellService;
@@ -46,4 +47,14 @@ class WellServiceFeignTest {
     void getWells_Success() {
         assertNotNull(wellService.getWells(PROJECT_EXISTS));
     }
+
+    @Test
+    @DisplayName("getWell() auth success 'remote'")
+    void getWell_AuthSuccess() {
+        Well well = wellService.getWell(PROJECT_EXISTS, UWI_AUTH);
+        log.info("getWell(" + PROJECT_EXISTS + "," + UWI_PERMIT + ")=" + well.toString());
+        assertNotNull(well);
+    }
+
+
 }

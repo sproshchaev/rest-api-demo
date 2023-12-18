@@ -35,13 +35,11 @@ public class WellServiceFeign implements WellService {
     public List<Well> getWells(String project) {
         ResponseEntity<Well[]> response = restTemplate.getForEntity("http://localhost:8081/wells/" + project, Well[].class);
         return Arrays.asList(Objects.requireNonNull(response.getBody()));
-
         // restTemplate.exchange
         // (uri, HttpMethod.POST, new HttpEntity<T>(createHeaders(username, password)), clazz);
-
     }
 
-/*  https://www.baeldung.com/how-to-use-resttemplate-with-basic-authentication-in-spring */
+/*  https://www.baeldung.com/how-to-use-resttemplate-with-basic-authentication-in-spring
     private HttpHeaders createHeaders(String username, String password){
         return new HttpHeaders() {{
             String auth = username + ":" + password;
@@ -50,6 +48,6 @@ public class WellServiceFeign implements WellService {
             String authHeader = "Basic " + new String( encodedAuth );
             set( "Authorization", authHeader );
         }};
-    }
+    } */
 
 }
