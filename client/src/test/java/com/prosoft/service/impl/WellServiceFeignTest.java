@@ -43,7 +43,7 @@ class WellServiceFeignTest {
     }
 
     @Test
-    @DisplayName("getWells() success")
+    @DisplayName("getWells() list success")
     void getWells_Success() {
         assertNotNull(wellService.getWells(PROJECT_EXISTS));
     }

@@ -2,6 +2,8 @@ geoeditor:
   well-service:
     name: server
     host: localhost:8081
+    username: remote
+    password: remote
 spring:
   main:
     web-application-type: none
