@@ -3,7 +3,7 @@ geoeditor:
     name: server
     host: localhost:8081
     username: remote
-    password: remote
+    password: ENC(hh4P+7uz2giGnFPzBaq6iqRuSj7fBlSK99BOwf9oCP5/cdJum8R+PhU7lDN/PnKy)
 spring:
   main:
     web-application-type: none
@@ -11,3 +11,7 @@ spring:
 use:
   feign:
     client: true
+
+jasypt:
+  encryptor:
+    password: sk091254
