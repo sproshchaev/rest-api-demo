@@ -3,21 +3,24 @@ REST API с использованием Spring Security
 
 ### 1. Настройки секретов c использованием Jasypt
 
-1) Клиент:
+1) Зависимости и опции:
+    - pom.xml: jasypt-spring-boot-starter, jasypt-maven-plugin
+    - @EnableEncryptableProperties,
+    - application.yml (jasypt-encryptor-password, ENC(..)).
+
+2) Генерация дял Клиента:
 ```bash
 c:
 cd \..\rest-api-demo\client
 mvn jasypt:encrypt-value "-Djasypt.encryptor.password=sk091254" "-Djasypt.plugin.value=remote"
 ```
 
-2) Сервер: 
+3) Генерация для Сервера: 
 ```bash
 c:
 cd \..\rest-api-demo\server
 mvn jasypt:encrypt-value "-Djasypt.encryptor.password=sk091254" "-Djasypt.plugin.value=Dp12345678"
 ```
-
-3) Дополнительные опции: @EnableEncryptableProperties, application.yml (jasypt-encryptor-password, ENC(..)).
 
 ### References
 1. Погружение в Spring Security для Servlet API https://alexkosarev.name/2023/05/27/deep-dive-into-spring-security-for-servlet-api-part-1/
