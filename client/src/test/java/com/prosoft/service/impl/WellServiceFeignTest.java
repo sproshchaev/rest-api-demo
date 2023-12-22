@@ -1,6 +1,8 @@
 package com.prosoft.service.impl;
 
 import com.prosoft.domain.Well;
+import com.prosoft.dto.User;
+import com.prosoft.feign.PostmanProxy;
 import com.prosoft.service.WellService;
 import feign.FeignException;
 import lombok.extern.slf4j.Slf4j;
@@ -26,9 +28,12 @@ class WellServiceFeignTest {
     @Autowired
     private WellService wellService;
 
+    @Autowired
+    private PostmanProxy postmanProxy;
+
     @Test
     @DisplayName("getWell() success")
-    void getWell_Success() {
+    void getWell_Success_Test() {
         Well well = wellService.getWell(PROJECT_EXISTS, UWI_PERMIT);
         log.info("getWell(" + PROJECT_EXISTS + "," + UWI_PERMIT + ")=" + well.toString());
         assertNotNull(well);
@@ -36,7 +41,7 @@ class WellServiceFeignTest {
 
     @Test
     @DisplayName("getWell() fail")
-    void getWell_Fail() {
+    void getWell_Fail_Test() {
         assertThrows(FeignException.class, () -> {
             wellService.getWell(PROJECT_EXISTS, UWI_DENY);
         });
@@ -44,16 +49,22 @@ class WellServiceFeignTest {
 
     @Test
     @DisplayName("getWells() list success")
-    void getWells_Success() {
+    void getWells_Success_Test() {
         assertNotNull(wellService.getWells(PROJECT_EXISTS));
     }
 
     @Test
     @DisplayName("getWell() auth success 'remote'")
-    void getWell_AuthSuccess() {
+    void getWell_AuthSuccess_Test() {
         Well well = wellService.getWell(PROJECT_EXISTS, UWI_AUTH);
         log.info("getWell(" + PROJECT_EXISTS + "," + UWI_PERMIT + ")=" + well.toString());
         assertNotNull(well);
+    }
+
+    @Test
+    @DisplayName("postman")
+    void getToken_Test() {
+        postmanProxy.getToken(new User("user1", "pass1"));
     }
 
 

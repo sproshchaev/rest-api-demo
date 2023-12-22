@@ -22,6 +22,11 @@ cd \..\rest-api-demo\server
 mvn jasypt:encrypt-value "-Djasypt.encryptor.password=sk091254" "-Djasypt.plugin.value=Dp12345678"
 ```
 
+### PostmanProxy
+```bash
+curl -k --header "Content-Type: application/json" --header "Accept: application/json" --request POST --data "{\"userName\":\"user1\", \"password\":\"pass1\"}" -i https://7c0bf53e-8f0b-49a0-aebe-a44dcbe4e2aa.mock.pstmn.io/api/auth/plain
+```
+
 ### References
 1. Погружение в Spring Security для Servlet API https://alexkosarev.name/2023/05/27/deep-dive-into-spring-security-for-servlet-api-part-1/
 2. RESTful API Authentication with Spring Security https://shzhangji.com/blog/2023/01/15/restful-api-authentication-with-spring-security/
